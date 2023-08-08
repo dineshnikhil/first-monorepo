@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { z } from 'zod';
 import { useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,12 @@ const Login: React.FC = () => {
 
 	const loginSubmitHandler = async (event: React.FormEvent) => {
 		event.preventDefault();
+		// const inputObject = {
+		// 	username: username.current?.value,
+		// 	password: password.current?.value,
+		// };
+		// const parsedInput = signInUser.safeParse(inputObject);
+
 		// const pasedInput = signInUser.safeParse({
 		// 	username: username.current?.value,
 		// 	password: password.current?.value,

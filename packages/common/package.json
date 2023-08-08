@@ -14,5 +14,6 @@
 	"license": "ISC",
 	"dependencies": {
 		"zod": "^3.21.4"
-	}
+	},
+	"types": "./dist/index.d.ts"
 }

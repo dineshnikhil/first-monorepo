@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import UserRepository from '../repository/user-repository';
-// import { createUserType, signInUserType } from '../../../common/src';
 import { createUserType, signInUserType } from 'common';
 
 class UserServices {
