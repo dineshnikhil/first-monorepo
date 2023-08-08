@@ -1,22 +1,24 @@
-import * as React from "react";
-import "./App.css";
-import { CounterButton, NewTabLink } from "ui";
+import * as React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { Nav } from 'ui';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signin from './pages/Signin';
 
 function App() {
-  return (
-    <div className="container">
-      <h1 className="title">
-        Admin <br />
-        <span>Kitchen Sink</span>
-      </h1>
-      <CounterButton />
-      <p className="description">
-        Built With{" "}
-        <NewTabLink href="https://turbo.build/repo">Turborepo</NewTabLink> +{" "}
-        <NewTabLink href="https://vitejs.dev/">Vite</NewTabLink>
-      </p>
-    </div>
-  );
+	return (
+		<>
+			<Nav />
+			<div className="container">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<Signin />} />
+				</Routes>
+			</div>
+		</>
+	);
 }
 
 export default App;
