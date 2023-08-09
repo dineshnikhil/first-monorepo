@@ -1,0 +1,20 @@
+{
+	"name": "state",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./src/index.ts",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+		"dev": "tsc -w",
+		"lint": "eslint \"src/**/*.ts*\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"recoil": "^0.7.7"
+	}
+}

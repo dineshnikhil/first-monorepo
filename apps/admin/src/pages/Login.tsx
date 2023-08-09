@@ -3,7 +3,9 @@ import { useSetRecoilState } from 'recoil';
 import { useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { authState } from '../store/atoms/authState';
+// import { authState } from '../store/atoms/authState';
+import * as auth from 'state';
+// import {authState} from 'state';
 import { signInUser } from 'common';
 
 const Login: React.FC = () => {
@@ -11,7 +13,7 @@ const Login: React.FC = () => {
 	const username = useRef<HTMLInputElement>(null);
 	const password = useRef<HTMLInputElement>(null);
 
-	const setAuth = useSetRecoilState(authState);
+	const setAuth = useSetRecoilState(auth.authState);
 
 	const loginSubmitHandler = async (event: React.FormEvent) => {
 		event.preventDefault();

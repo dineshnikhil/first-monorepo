@@ -4,13 +4,13 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tweetType } from 'common';
-import { authState } from '../store/atoms/authState';
+import * as auth from 'state';
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const [tweets, setTweets] = useState([]);
-	const authstate = useRecoilValue(authState);
-	const setAuth = useSetRecoilState(authState);
+	const authstate = useRecoilValue(auth.authState);
+	const setAuth = useSetRecoilState(auth.authState);
 
 	useEffect(() => {
 		const token = window.localStorage.getItem('token');
