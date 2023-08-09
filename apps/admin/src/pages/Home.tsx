@@ -4,9 +4,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tweetType } from 'common';
-// import * as auth from 'state';
 import { authState } from 'state';
-import { AddTweet } from 'ui';
+import { AddTweet, Tweet } from 'ui';
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
@@ -40,7 +39,7 @@ const Home: React.FC = () => {
 				<AddTweet />
 			</div>
 			{tweets.map((tweet: tweetType) => {
-				return <h1 key={Math.random()}>{tweet.content}</h1>;
+				return <Tweet key={Math.random()} tweet={tweet} />;
 			})}
 		</div>
 	);

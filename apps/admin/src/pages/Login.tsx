@@ -35,21 +35,6 @@ const Login: React.FC = () => {
 		} else {
 			window.alert('wrong input..!');
 		}
-		// const response = await axios.post('http://localhost:3000/api/v1/signin', {
-		// 	username: username.current?.value,
-		// 	password: password.current?.value,
-		// });
-
-		// if (response.data.token) {
-		// 	setAuth({
-		// 		token: response.data.token,
-		// 		username: username.current?.value as string,
-		// 	});
-		// 	window.localStorage.setItem('token', response.data.token);
-		// 	navigate('/');
-		// } else {
-		// 	window.alert('wrong input..!');
-		// }
 	};
 
 	return (
