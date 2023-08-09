@@ -8,15 +8,11 @@ export const LoginForm: React.FC<{
 	return (
 		<div>
 			<form>
-				<label htmlFor="username" ref={username}>
-					Username
-				</label>
-				<input type="text" id="username" />
+				<label htmlFor="username">Username</label>
+				<input type="text" id="username" ref={username} />
 
-				<label htmlFor="password" ref={password}>
-					Password
-				</label>
-				<input type="text" id="password" />
+				<label htmlFor="password">Password</label>
+				<input type="text" id="password" ref={password} />
 
 				<button type="submit" onClick={onLoginHandler}>
 					login
