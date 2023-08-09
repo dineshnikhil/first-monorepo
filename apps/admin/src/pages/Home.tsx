@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tweetType } from 'common';
@@ -10,6 +10,7 @@ const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const [tweets, setTweets] = useState([]);
 	const authstate = useRecoilValue(authState);
+	const setAuth = useSetRecoilState(authState);
 
 	useEffect(() => {
 		const token = window.localStorage.getItem('token');
@@ -19,6 +20,7 @@ const Home: React.FC = () => {
 					Authorization: token,
 				},
 			});
+			setAuth({ token: token as string, username: response.data.username });
 			setTweets(response.data.tweets);
 		}
 

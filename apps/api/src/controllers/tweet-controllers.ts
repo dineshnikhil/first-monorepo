@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import TweetServices from '../services/tweet-services';
+import UserServices from '../services/user-services';
 import { tweet } from 'common';
 
 const tweetServices = new TweetServices();
+const userServices = new UserServices();
 
 const create = async (req: Request, res: Response) => {
 	try {
@@ -38,7 +40,11 @@ const getTweets = async (req: Request, res: Response) => {
 	try {
 		const userIdFromClient: string = req.headers['userId'] as string;
 		const tweets = await tweetServices.getTweets(userIdFromClient);
+		const user = await userServices.getUserById(
+			req.headers['userId'] as string
+		);
 		return res.status(200).json({
+			username: user?.username,
 			tweets: tweets,
 			message: 'successfully fetched the tweets.!',
 			error: {},

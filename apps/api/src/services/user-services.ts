@@ -41,6 +41,16 @@ class UserServices {
 		}
 	}
 
+	async getUserById(userId: string) {
+		try {
+			const user = await this.userRepository.getUserById(userId);
+			return user;
+		} catch (error) {
+			console.log('something went wrong in the services layer.!');
+			console.log(error);
+		}
+	}
+
 	async checkPassword(userInputPassword: string, encryptedPassword: string) {
 		try {
 			return bcrypt.compareSync(userInputPassword, encryptedPassword);
