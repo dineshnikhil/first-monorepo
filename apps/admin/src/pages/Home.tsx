@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { tweetType } from 'common';
 // import * as auth from 'state';
 import { authState } from 'state';
+import { AddTweet } from 'ui';
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
 		<div>
 			<div>
 				<h2>username: {authstate.username}</h2>
+				<AddTweet />
 			</div>
 			{tweets.map((tweet: tweetType) => {
 				return <h1 key={Math.random()}>{tweet.content}</h1>;
