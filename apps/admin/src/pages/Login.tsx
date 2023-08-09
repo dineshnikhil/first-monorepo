@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { z } from 'zod';
+import { useSetRecoilState } from 'recoil';
 import { useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { authState } from '../store/atoms/authState';
 import { signInUser } from 'common';
 
 const Login: React.FC = () => {
@@ -10,14 +11,10 @@ const Login: React.FC = () => {
 	const username = useRef<HTMLInputElement>(null);
 	const password = useRef<HTMLInputElement>(null);
 
+	const setAuth = useSetRecoilState(authState);
+
 	const loginSubmitHandler = async (event: React.FormEvent) => {
 		event.preventDefault();
-		// const inputObject = {
-		// 	username: username.current?.value,
-		// 	password: password.current?.value,
-		// };
-		// const parsedInput = signInUser.safeParse(inputObject);
-
 		// const pasedInput = signInUser.safeParse({
 		// 	username: username.current?.value,
 		// 	password: password.current?.value,
@@ -42,6 +39,10 @@ const Login: React.FC = () => {
 		});
 
 		if (response.data.token) {
+			setAuth({
+				token: response.data.token,
+				username: username.current?.value as string,
+			});
 			window.localStorage.setItem('token', response.data.token);
 			navigate('/');
 		} else {

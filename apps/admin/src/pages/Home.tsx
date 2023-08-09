@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tweetType } from 'common';
+import { authState } from '../store/atoms/authState';
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const [tweets, setTweets] = useState([]);
+	const authstate = useRecoilValue(authState);
 
 	useEffect(() => {
 		const token = window.localStorage.getItem('token');
@@ -28,6 +31,9 @@ const Home: React.FC = () => {
 
 	return (
 		<div>
+			<div>
+				<h2>username: {authstate.username}</h2>
+			</div>
 			{tweets.map((tweet: tweetType) => {
 				return <h1 key={Math.random()}>{tweet.content}</h1>;
 			})}
